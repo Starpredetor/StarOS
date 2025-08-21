@@ -78,9 +78,8 @@ setup_page_tables:
 	mov [page_table_l2 + ecx * 8], eax
 
 	inc ecx ; increment counter
-	cmp ecx, 512 ; checks if the whole table is mapped
-	jne .loop ; if not, continue
-
+	cmp ecx, 512 
+	jne .loop 
 	ret
 
 enable_paging:
