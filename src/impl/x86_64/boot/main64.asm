@@ -13,4 +13,10 @@ long_mode_start:
     mov gs, ax
 
 	call kernel_main
+
+    ; kernel_main returning is not expected, but if it does, stop cleanly
+    ; rather than executing past the end of this function.
+.hang:
+    cli
     hlt
+    jmp .hang

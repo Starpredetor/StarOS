@@ -16,7 +16,12 @@ start:
 	lgdt [gdt64.pointer]
 	jmp gdt64.code_segment:long_mode_start
 
+	; Unreachable: the far jump above does not return. A bare hlt would
+	; resume on the next interrupt and execute whatever follows it.
+.hang:
+	cli
 	hlt
+	jmp .hang
 
 check_multiboot:
 	cmp eax, 0x36d76289
@@ -111,7 +116,10 @@ error:
 	mov dword [0xb8004], 0x4f3a4f52
 	mov dword [0xb8008], 0x4f204f20
 	mov byte  [0xb800a], al
+.hang:
+	cli
 	hlt
+	jmp .hang
 
 section .bss
 align 4096
