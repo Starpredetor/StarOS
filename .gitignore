@@ -1,5 +1,18 @@
+# Build output
 /build/
-*.bin
+/dist/
+targets/*/iso/boot/kernel.bin
+
+# Object and dependency files
 *.o
+*.d
+*.bin
+*.iso
 *.so
 *.a
+
+# Editor / OS noise
+.vscode/
+.idea/
+*.swp
+.DS_Store

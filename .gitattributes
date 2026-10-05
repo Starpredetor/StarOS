@@ -1,0 +1,11 @@
+# Keep LF endings in the repository and in the working tree.
+#
+# The build runs on Linux (in the Docker buildenv or under WSL). CRLF in a
+# Makefile breaks recipe parsing, and CRLF in shell scripts breaks the
+# shebang line, so line endings are pinned rather than left to core.autocrlf.
+* text=auto eol=lf
+
+*.png binary
+*.iso binary
+*.bin binary
+*.o   binary
